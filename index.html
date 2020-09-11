@@ -1,0 +1,81 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet"
+          href= 
+"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="assets/script.js" type="text/javascript"></script>
+<script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
+  <script src="https://cdn.anychart.com/releases/v8/js/anychart-ui.min.js"></script>
+  <script src="https://cdn.anychart.com/releases/v8/js/anychart-exports.min.js"></script>
+  <link href="https://cdn.anychart.com/releases/v8/css/anychart-ui.min.css" type="text/css" rel="stylesheet">
+  <link href="https://cdn.anychart.com/releases/v8/fonts/css/anychart-font.min.css" type="text/css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+
+</head>
+<body>
+    <!-- Header -->
+
+<div class="header">
+<span class="menu">Menu</span>
+<span class="username">User Name</span>
+<span class="report">Sales Report</text>
+</div>
+
+<!-- Dropdowns -->
+<div class="dropdown">
+	<span class="dropdown1">Category:
+    </span>
+	<select id="category" onchange="Dropdown_select(this.value)">
+		<option value="select">Select</option>
+		<option value="food">Food</option>
+		<option value="drinks">Drinks</option>
+	</select>
+	<text class="dropdown2">Product:</text>
+	<select id="products" onchange="Dropdown_select(this.value)">
+		<option value="select">Select</option>
+		
+	</select>
+	<text class="dropdown3">Brand:</text>
+	<select id="brand" onchange="Dropdown_select(this.value)">
+		<option value="select">Select</option>
+		
+	</select>
+</div>
+<!-- Main container -->
+<div id="chart">
+<div id="container"></div>
+</div>
+<!-- Script (anychart) -->
+<script>
+anychart.onDocumentReady(function () {
+    var chart = anychart.column();
+
+    chart.animation(true);
+
+    chart.title('Sales By Month for');
+ 
+    var series = chart.column([
+        ['January', '0'],
+        ['February', '0'],
+        ['March', '0'],
+        ['April', '0']
+    ]);  
+
+    chart.yScale().minimum(0);  
+
+    chart.tooltip().positionMode('point');
+    chart.interactivity().hoverMode('by-x');
+
+    chart.xAxis().title('Months');
+    chart.yAxis().title('Sales');
+
+    chart.container('container');
+
+    chart.draw();
+});
+</script>
+
+</body>
+
+</html>
